@@ -6,9 +6,14 @@ const fetchBreedDescription = (catToSearch, callback) => {
     if (error) {
       callback(error, null);
     }
-    const data = JSON.parse(body)[0].description;
-    callback(null, data);
-  });
+    const data = JSON.parse(body);
+    if (data.length > 0) {
+      const desc = data[0].description;
+      callback(null, desc);
+    } else {
+      callback(null, undefined);
+    }
+  })
 };
 
 module.exports = { fetchBreedDescription };

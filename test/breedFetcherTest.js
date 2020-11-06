@@ -22,4 +22,13 @@ describe('fetchBreedDescription', () => {
       done();
     });
   });
+  it('returns error when a nothing is returned from the search', (done) => {
+    fetchBreedDescription('hjgfhg', (err, desc) => {
+      assert.equal(err, null);
+
+      assert.equal(desc, undefined);
+
+      done();
+    });
+  });
 });
